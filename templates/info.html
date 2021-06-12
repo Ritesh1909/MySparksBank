@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MySparks Bank</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="/../static/style.css">
+</head>
+<body> 
+    <!-- Dark Mode Switch -->
+    <div class="theme-switch-wrapper">
+        <span id="toggle-icon">
+            <span id="toggle-text">Light Mode</span> 
+            <i class="fas fa-sun"></i>
+        </span>
+        <label class="theme-switch">
+            <input type="checkbox">
+            <div class="slider round" ></div>
+        </label>
+    </div>
+    <!-- Nvigation -->
+    <div class="header">
+        <nav id="nav">
+          <a href="/../index.html"><img src="/static/android-chrome-512x512.png" alt="logo" /></a>
+          <a href="/../index.html">HOME</a>
+          <a href="/../customers.html">CUSTOMERS</a>
+          <a href="/../record.html">TRANSFER HISTORY</a>
+        </nav>
+    </div> 
+    <div class="List"> 
+      <h3>TRANSACTIONS HISTORY</h3> 
+      {% if error_statement %}
+          <div class="alert alert-danger alert-dismissible">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>{{ error_statement }}  </strong> 
+          </div>
+        {% endif %}
+        {% if Statement %}
+          <div class="alert alert-success alert-dismissible">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>{{ Statement }}  </strong> 
+          </div>
+        {% endif %}
+      <table class="table table-dark table-hover">
+          <thead>
+            <tr>
+              <th scope="col">Debited From</th>
+              <th scope="col">Credited To</th>
+              <th scope="col">Amount</th>
+              <th scope="col">Date & Time</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for record in records %}
+                <tr>
+                  <th scope="row">{{record.debitedFrom}}</th>
+                  <td>{{record.creditedTo}}</td>
+                  <td>{{record.amount}}</td>
+                  <td>{{record.date_created}}</td>
+                </tr>
+                {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    <script src="/../static/script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+</html>   

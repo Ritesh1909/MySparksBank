@@ -1,0 +1,29 @@
+{% extends 'blocks.html' %}
+{% block content %}
+    <!-- Table -->
+    <div class="List">   
+        <table class="table table-dark table-hover">
+          <h3>CUSTOMERS</h3>
+            <thead>
+              <tr>
+                <th scope="col">Customer ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Balance</th>
+                <th scope="col">Operation</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for List in Lists %}
+              <tr>
+                <th scope="row">{{List.id}}</th>
+                <td>{{List.name}}</td>
+                <td>{{List.email}}</td>
+                <td>{{List.balance}}</td>
+                <td><a href="transact.html/{{ List.id }}/{{ List.name }}/{{ List.email }}/{{ List.balance }}"><button class="primary outline">Transact</button></a></td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+{% endblock%}
